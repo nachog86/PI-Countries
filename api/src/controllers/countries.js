@@ -53,10 +53,14 @@ const getAllCountries = async (req, res, next) => {
 // Definimos una función asíncrona para manejar las solicitudes GET a la ruta /countries/:idPais
 const getCountryById = async (req, res, next) => {
     try {
+        console.log('Buscando país con ID:', req.params.idPais); // Agregamos un registro de consola aquí
+
         // Intentamos encontrar un país en la base de datos con la ID proporcionada en los parámetros de la ruta
         const country = await Country.findByPk(req.params.idPais.toUpperCase(), {
             include: TouristActivity
         });
+
+        console.log('País encontrado:', country); // Agregamos otro registro de consola aquí
 
         // Si encontramos un país, lo enviamos como respuesta
         if (country) {
@@ -72,33 +76,38 @@ const getCountryById = async (req, res, next) => {
     }
 }
 
+
+
 // Definimos una función asíncrona para manejar las solicitudes GET a la ruta /countries/name?="..."
 const getCountriesByName = async (req, res, next) => {
     try {
-        // Intentamos encontrar países en la base de datos cuyo nombre coincida con el proporcionado en la cadena de consulta
+        console.log(`Searching for countries with name: ${req.query.name}`);
         const countries = await Country.findAll({
             where: {
                 name: {
-                    // Usamos el operador iLike para hacer una búsqueda insensible a mayúsculas y minúsculas que coincida en cualquier parte del nombre
                     [Op.iLike]: `%${req.query.name}%`
                 }
             },
-            include: TouristActivity
+            include: TouristActivity,
+            logging: console.log  // esto mostrará la consulta SQL en tu consola
         });
+        
 
-        // Si encontramos algún país, los enviamos como respuesta
+        console.log(`Countries found: ${countries.length}`);
+
         if (countries.length > 0) {
             res.json(countries);
         } else {
-            // Si no encontramos ningún país, enviamos un código de estado 404 y un mensaje de error
             res.status(404).send('No countries found with that name');
         }
 
     } catch (error) {
-        // Si ocurre algún error durante este proceso, lo pasamos al siguiente middleware (en este caso, el middleware de manejo de errores)
         next(error);
     }
 }
+
+
+
 
 // Exportamos nuestras funciones para poder usarlas en otros archivos
 module.exports = {
