@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     // Imagen de la bandera
     flagImage: {
       type: DataTypes.STRING, // Normalmente las imágenes se guardan como URL, por eso es un STRING
-      allowNull: false, // Si se requiere la imagen de la bandera
+      allowNull: true, // algunos paises no tiene banderas entonces q nos permita valores nulos
     },
     // Continente
     continent: {
