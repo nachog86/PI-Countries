@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
     },
     // Temporada en la que se realiza la actividad turística
     season: {
-      type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
+      type: DataTypes.ENUM('summer', 'winter', 'spring', 'autumn'),
       allowNull: false, // Esto significa que la temporada es un campo requerido
     },
   });

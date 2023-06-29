@@ -18,12 +18,12 @@ router.get('/countries', getAllCountries);
 // Definimos la ruta GET para '/:idPais', que recupera un país específico por su ID
 // Usamos el controlador getCountryById que hemos importado
 // Este controlador se encargará de la lógica de recuperar la información de la base de datos
-router.get('/countries/:idPais', getCountryById);
+router.get('/countries/id/:id', getCountryById);
 
 // Definimos la ruta GET para '/name', que recupera los países que coinciden con un nombre específico
 // Usamos el controlador getCountriesByName que hemos importado
 // Este controlador se encargará de la lógica de recuperar la información de la base de datos
-router.get('/countries/name', getCountriesByName);
+router.get('/countries/:name', getCountriesByName);
 
 // Ruta para obtener todas las actividades
 // Cuando el cliente envía una solicitud GET a /activities, se llama a la función getAllActivities
