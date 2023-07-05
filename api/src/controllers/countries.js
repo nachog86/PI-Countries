@@ -18,7 +18,7 @@ const getAllCountries = async (req, res, next) => {
                 return Country.create({
                     id: country.cca3,
                     name: country.name.common,
-                    flag: country.flags[1], 
+                    flagImage: country.flags[1], 
                     continent: country.region,
                     capital: country.capital && country.capital[0],
                     subregion: country.subregion,
