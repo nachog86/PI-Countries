@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import backgroundVideo from '../../assets/images/backgroundVideo.mp4';
 import './Landing.css';
-import yourGif from '../../assets/images/alb_glob0401_1080p_24fps.mp4';
 
 function Landing() {
     return (
-        <div className="landing">
-            <h1>Bienvenido a Henry Countries!</h1>
-            <img src={yourGif} alt="Imagen descriptiva" />
-            <Link to="/home">
-                <button>Ingresa a la Home Page</button>
-            </Link>
-        </div>
+      <div className="landing">
+        <video className='videoTag' autoPlay loop muted>
+          <source src={backgroundVideo} type='video/mp4' />
+        </video>
+        <h1>Bienvenido a Mi Aplicación de Countries</h1>
+        <Link to="/home">
+          <button>Ingresar</button>
+        </Link>
+      </div>
     );
-}
-
-export default Landing;
+  }
+  
+  export default Landing;
 

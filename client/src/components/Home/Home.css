@@ -1,0 +1,12 @@
+.home {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.home img {
+    width: 200px;
+}
